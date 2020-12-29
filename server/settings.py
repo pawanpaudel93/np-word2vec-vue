@@ -5,10 +5,10 @@ import os
 
 load_dotenv(dotenv_path=Path('..') / '.env')
 
-MODE = os.getenv('MODE')
+MODE = os.getenv('MODE', 'development')
 
 class Config(object):
-    SECRET_KEY = os.getenv("SECRET_KEY")
+    SECRET_KEY = os.getenv("SECRET_KEY", "iamthesecret")
     DEBUG = True
  
 class ProductionConfig(Config):
