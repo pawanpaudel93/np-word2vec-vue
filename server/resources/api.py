@@ -51,6 +51,8 @@ class OddOneOut(Resource):
                     return make_response({"error": "Atleast 3 words are required"}, 400)
                 odd_one = model.wv.doesnt_match(words)
                 return make_response({"oddOne": odd_one}, 200)
+            except ValueError:
+                return make_response({"error": "Are all words Nepali?"}, 400)
             except BaseException as error:
                 return make_response({"error": str(error)}, 400)
         else:
