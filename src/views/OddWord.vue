@@ -104,5 +104,8 @@
         this.words = ''
       },
     },
+    mounted () {
+      this.$store.commit("SET_ERROR", "")
+    }
   }
 </script>

@@ -22,6 +22,14 @@ export default {
 
   data: () => ({
     //
-  })
+  }),
+  watch: {
+    '$route': {
+      handler: (to, from) => {
+        document.title = to.meta.title || "NP WORD2VEC"
+      },
+      immediate: true
+    }
+  }
 };
 </script>

@@ -12,6 +12,11 @@
       </div>
       <v-toolbar-title>NP Word2Vec</v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-toolbar-items class="ml-3">
+        <v-btn text to="/">Similar Words</v-btn>
+        <v-btn text to="/similarity-measure">Similarity Measure</v-btn>
+        <v-btn text to="/odd-word">Odd Word</v-btn>
+      </v-toolbar-items>
     </v-app-bar>
 </template>
 

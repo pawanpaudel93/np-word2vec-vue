@@ -108,5 +108,8 @@
         this.word = ''
       },
     },
+    mounted () {
+      this.$store.commit("SET_ERROR", "")
+    }
   }
 </script>
