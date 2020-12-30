@@ -4,8 +4,8 @@ from flask_cors import CORS
 from flask_restful import Api
 # from gensim.models import Word2Vec
 
-from settings import MODE, ProductionConfig, DevelopmentConfig
-from resources.routes import initialize_routes
+from server.settings import MODE, ProductionConfig, DevelopmentConfig
+from server.resources.routes import initialize_routes
 
 def create_app():
     app = Flask(__name__, 
@@ -24,6 +24,3 @@ app = create_app()
 @app.route('/<path:path>')
 def catch_all(path):
     return render_template("index.html")
-
-if __name__ == '__main__':
-    run_simple("0.0.0.0", 5000, app, use_debugger=True, use_reloader=True)

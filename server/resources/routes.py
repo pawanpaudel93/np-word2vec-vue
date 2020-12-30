@@ -1,4 +1,4 @@
-from .api import SimilarWords, SimilarityMeasure, OddOneOut, AnalogyDifference
+from server.resources.api import SimilarWords, SimilarityMeasure, OddOneOut, AnalogyDifference
 
 def initialize_routes(api):
     api.add_resource(SimilarWords, '/api/v1/similar-words')

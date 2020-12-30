@@ -1,10 +1,11 @@
 from flask import request, jsonify, make_response, Response
 from flask_restful import Resource
 from gensim.models import Word2Vec
+import os
 
 def load_model():
     print("Loading model...")
-    return Word2Vec.load("./static/model/word2vec_NP.bin")
+    return Word2Vec.load(os.path.join(os.getcwd(), "server/static/model/word2vec_NP.bin"))
 
 model = load_model()
 
