@@ -44,7 +44,7 @@
         {{error}}
       </v-chip>
     </v-row>
-    <v-row align="center" justify="space-around">{{oddWord}}</v-row>
+    <v-row class="green--text" align="center" justify="space-around" v-if="oddWord">Odd Word: {{oddWord}}</v-row>
   </v-container>
 </template>
 
@@ -106,6 +106,7 @@
     },
     mounted () {
       this.$store.commit("SET_ERROR", "")
+      this.$store.commit("SET_ODD_WORD", "")
     }
   }
 </script>

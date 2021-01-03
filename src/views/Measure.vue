@@ -52,7 +52,7 @@
         {{error}}
       </v-chip>
     </v-row>
-    <v-row align="center" justify="space-around">{{similarityMeasure}}</v-row>
+    <v-row class="green--text" align="center" justify="space-around" v-if="similarityMeasure">Similarity Score: {{similarityMeasure}}</v-row>
   </v-container>
 </template>
 
@@ -124,6 +124,7 @@
     },
     mounted () {
       this.$store.commit("SET_ERROR", "")
+      this.$store.commit("SET_SIMILARITY_MEASURE", "")
     }
   }
 </script>

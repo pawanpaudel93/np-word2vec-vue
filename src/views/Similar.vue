@@ -1,36 +1,44 @@
 <template>
   <v-container>
-    <v-card :width="width" class="mx-auto mt-3 rounded-lg" outlined shaped tile elevation="1">
-      <v-row align="center" justify="space-around">
-        <v-card-title justify="center">Find Most Similar Words</v-card-title>
-      </v-row>
-      <v-divider></v-divider>
-       <v-form ref="form" lazy-validation @submit.prevent="Find">
-        <v-card-text>
-          <v-text-field
-            v-model="word"
-            :error-messages="wordErrors"
-            label="Nepali word"
-            required
-            outlined
-            filled 
-            autocomplete="on"
-          ></v-text-field>
-        </v-card-text>
-        <v-card-actions>
+    <v-row>
+      <v-col>
+        <v-card :width="width" class="mx-auto mt-3 rounded-lg" outlined shaped tile elevation="1">
           <v-row align="center" justify="space-around">
-            <v-btn
-              type="submit"
-              class="mr-4"
-              color="success"
-              large
-            >
-              Find
-            </v-btn>
+            <v-card-title justify="center">Find Most Similar Words</v-card-title>
           </v-row>
-        </v-card-actions>
-      </v-form>
-    </v-card>
+          <v-divider></v-divider>
+          <v-form ref="form" lazy-validation @submit.prevent="Find">
+            <v-card-text>
+              <v-text-field
+                v-model="word"
+                :error-messages="wordErrors"
+                label="Nepali word"
+                required
+                outlined
+                filled 
+                autocomplete="on"
+                v-on:input="checkWord"
+              ></v-text-field>
+            </v-card-text>
+            <v-card-actions>
+              <v-row align="center" justify="space-around">
+                <v-btn
+                  type="submit"
+                  class="mr-4"
+                  color="success"
+                  large
+                >
+                  Find
+                </v-btn>
+              </v-row>
+            </v-card-actions>
+          </v-form>
+        </v-card>
+      </v-col>
+      <v-col>
+        <Words :word="word"/>
+      </v-col>
+    </v-row>
     <v-row align="center" justify="space-around">
       <v-chip
         v-if="chip && error"
@@ -43,7 +51,6 @@
         {{error}}
       </v-chip>
     </v-row>
-    <Words :word="word"/>
   </v-container>
 </template>
 
@@ -107,9 +114,15 @@
         this.$v.$reset()
         this.word = ''
       },
+      checkWord () {
+        if (this.word == "") {
+          this.$store.commit("SET_SIMILAR_WORDS", [])
+        }
+      }
     },
     mounted () {
       this.$store.commit("SET_ERROR", "")
+      this.$store.commit("SET_SIMILAR_WORDS", [])
     }
   }
 </script>
