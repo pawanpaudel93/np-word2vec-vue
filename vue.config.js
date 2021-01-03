@@ -1,8 +1,9 @@
-const DEPLOYMENT_PATH = "/static/dist"
+const DEPLOYMENT_PATH = "/"
 
 module.exports = {
   publicPath: process.env.NODE_ENV === "production" ? DEPLOYMENT_PATH : "/",
   outputDir: "server/static/dist",
+  assetsDir: 'static',
   devServer: {
     // public: "localhost:8080",
     proxy: "http://localhost:5000",
